@@ -52,12 +52,14 @@ Dalam proyek ini, saya juga membangun business dashboard yang memungkinkan manaj
 ### Jalankan Dashboard Metabase Docker
 
 1. Install Docker Download & install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-2. Jalankan Metabase Container
+2. Buka CMD di direktori tempat file `docker-compose.yml` berada
+3. Jalankan Metabase Container
    ```
-   docker-compose up -d
+   docker-compose up
    ```
-3. Buka di Browser: http://localhost:3000
-4. Untuk menghentikan Container
+4. Buka di Browser: http://localhost:3000
+5. Untuk menghentikan Container tekan `Ctrl + c` pada CMD
+6. Untuk menghapus container
    ```
    docker-compose down
    ```
