@@ -23,12 +23,14 @@ Sumber data: https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/
 #### Setup environment:
 
 ##### Windows
+
 ```
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 ##### Linux/Mac
+
 ```
 python -m venv .venv
 source .venv/bin/activate
@@ -36,6 +38,7 @@ pip install -r requirements.txt
 ```
 
 ##### Conda
+
 ```
 conda create --name attrition-ds python=3.10.6
 conda activate attrition-ds
@@ -44,17 +47,21 @@ pip install -r requirements.txt
 
 ## Business Dashboard
 
-Dalam proyek ini, saya juga membangun business dashboard yang memungkinkan manajer HR untuk memonitor berbagai faktor yang mempengaruhi attrition rate. Dashboard ini dibuat menggunakan Metabase. Dashboard beserta database instance telah di ekspor pada 'metabase.db.mv.db'
+Dalam proyek ini, saya juga membangun business dashboard yang memungkinkan manajer HR untuk memonitor berbagai faktor yang mempengaruhi attrition rate. Dashboard ini dibuat menggunakan Metabase. Dashboard beserta database instance telah di ekspor pada `metabase.db.mv.db` yang disimpan pada direktori `metabase-data` dan telah disediakan file `docker-compose.yml` pada direktori utama untuk menjalankan dashboard.
 
-### Jalankan Metabase Docker
-```
-docker run -d -p 3000:3000 \
-    -v $(pwd)/metabase.db.mv.db:/metabase.db.mv.db \
-    --name metabase-container \
-    metabase/metabase
-```
+### Jalankan Dashboard Metabase Docker
 
-- Akses dashboard di browser: http://localhost:3000
+1. Install Docker Download & install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2. Jalankan Metabase Container
+   ```
+   docker-compose up -d
+   ```
+3. Buka di Browser: http://localhost:3000
+4. Untuk menghentikan Container
+   ```
+   docker-compose down
+   ```
+   
 - **Email**: root@mail.com  
 - **Password**: root123
 
@@ -106,4 +113,4 @@ Untuk melakukan prediksi pada data baru, pastikan data baru disimpan pada direkt
     docker build -t attrition-app .
     docker run attrition-app
     ```
-Hasil prediksi akan muncul di direktori yang sama dengan nama "predicted_attrition.csv"#
+Hasil prediksi akan muncul di direktori yang sama (utama) dengan nama `predicted_attrition.csv`
