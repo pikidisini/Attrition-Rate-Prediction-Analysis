@@ -14,16 +14,47 @@ Jaya Jaya Maju merupakan salah satu perusahaan multinasional yang telah berdiri 
 
 1. Mencari tahu apa saja faktor penyebab tingginya "Attrition" rate di perusahaan Jaya Jaya Maju.
 2. Membangun sistem prediktif untuk mendeteksi potensi risiko keluar.
+3. Membangun business dashboard menggunakan Metabase untuk memantau faktor-faktor utama attrition secara visual.
 
 ### Persiapan
 
 Sumber data: https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/refs/heads/main/employee/employee_data.csv
 
-Setup environment: jalankan script `pip install -r requirements.txt`
+#### Setup environment:
+
+##### Windows
+```
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+##### Linux/Mac
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+##### Conda
+```
+conda create --name attrition-ds python=3.10.6
+conda activate attrition-ds
+pip install -r requirements.txt
+```
+
 ## Business Dashboard
 
 Dalam proyek ini, saya juga membangun business dashboard yang memungkinkan manajer HR untuk memonitor berbagai faktor yang mempengaruhi attrition rate. Dashboard ini dibuat menggunakan Metabase. Dashboard beserta database instance telah di ekspor pada 'metabase.db.mv.db'
 
+### Jalankan Metabase Docker
+```
+docker run -d -p 3000:3000 \
+    -v $(pwd)/metabase.db.mv.db:/metabase.db.mv.db \
+    --name metabase-container \
+    metabase/metabase
+```
+
+- Akses dashboard di browser: http://localhost:3000
 - **Email**: root@mail.com  
 - **Password**: root123
 
@@ -71,8 +102,8 @@ Untuk melakukan prediksi pada data baru, pastikan data baru disimpan pada direkt
 
 1. Buka Terminal CMD atau PowerShell
 2. jalankan perintah ini:
-
-    - `docker build -t attrition-app .`
-    - `docker run attrition-app`
-
+    ```
+    docker build -t attrition-app .
+    docker run attrition-app
+    ```
 Hasil prediksi akan muncul di direktori yang sama dengan nama "predicted_attrition.csv"#
